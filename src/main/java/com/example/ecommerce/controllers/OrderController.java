@@ -15,6 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/order")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class OrderController {
     @Autowired
     private OrderService orderService;
@@ -25,7 +26,7 @@ public class OrderController {
     }
 
     @GetMapping("/all")
-    public List<Order> getAll() {
+    public List<Map<String, Object>>  getAll() {
         return this.orderService.listAllOrders();
     }
 

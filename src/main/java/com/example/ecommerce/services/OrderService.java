@@ -37,7 +37,7 @@ public class OrderService {
 
     }
 
-    public List<Order> listAllOrders() {
+    public List<Map<String, Object>>  listAllOrders() {
         String sql = "SELECT \n" +
                 "    o.id AS order_id,\n" +
                 "    p.name AS name,\n" +
@@ -49,7 +49,9 @@ public class OrderService {
                 "JOIN products p ON op.product_id = p.id\n" +
                 "ORDER BY order_id";
         Query query = entityManager.createNativeQuery(sql);
-        return query.getResultList();
+        List<Object[]> resultList = query.getResultList();
+        return transformResultList(resultList);
+        // return query.getResultList();
     }
 
 
@@ -72,7 +74,6 @@ public class OrderService {
         List<Object[]> resultList = query.getResultList();
 
         return transformResultList(resultList);
-
     }
 
     public List<Map<String, Object>> transformResultList(List<Object[]> resultList) {
