@@ -15,3 +15,4 @@ docker run -e DATASOURCE_PASSWORD='Ecommerce123..!!'
 
 ### Deployment details:
 - Deployed via: https://ec-java-back-production.up.railway.app
+- Database used: PostgreSQL via https://supabase.com/
